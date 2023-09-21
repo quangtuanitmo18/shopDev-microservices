@@ -1,3 +1,4 @@
+#ecommerce-backend
 ecommerce-backend/node_modules/
 ecommerce-backend/logs/*
 ecommerce-backend/.docker/
@@ -6,3 +7,6 @@ ecommerce-backend/.docker/data/redis/*
 ecommerce-backend.idea
 ecommerce-backend.docker/data/*
 ecommerce-backend/local/
+
+#sys_messages_queue
+sys_messages_queue/node_modules/
