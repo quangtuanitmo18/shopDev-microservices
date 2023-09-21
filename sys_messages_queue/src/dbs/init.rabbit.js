@@ -45,7 +45,11 @@ const consumerQueue = async (channel, queueName) => {
         // 1 . find user following that shop
         // 2. Send message to user
         // 3. yes oke-> success
-        // 4. error, setup dlx
+        // 4. error, setup dle dead letter exxchanges (hand doi chet) khi co loi no se day den hang doi chet
+        // Trong rabbit Queue có 3 loại để đưa vào dlx
+        // 1 chúng ta xử lý bị lỗi, notify bị từ chối
+        // 2 hết hạn tin nhắn
+        // 3 độ dài hàng đợi tối đa
       },
       {
         noAck: true, // And oil neu nhu bi loi the he thong xul
