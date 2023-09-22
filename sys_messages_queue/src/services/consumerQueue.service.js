@@ -21,18 +21,30 @@ const messageService = {
     try {
       const { channel, connection } = await connectToRabbitMQ();
       const notiQueue = "notificationQueueProcess";
-      setTimeout(() => {
-        channel.consume(notiQueue, (msg) => {
+      // setTimeout(() => {
+      channel.consume(notiQueue, (msg) => {
+        try {
+          const numberTest = Math.random();
+          console.log(numberTest);
+          if (numberTest < 0.5) {
+            // console.log("dsdsd");
+            throw new Error("Send notification failed::hotfix");
+          }
           console.log(
             "SEND notificationQueue successfully processed:",
             msg.content.toString()
           );
           channel.ack(msg);
-        });
-      }, 15000);
+        } catch (error) {
+          console.log("SEND notificationQueue error:", error);
+          channel.nack(msg, false, false);
+        }
+      });
+      // }, 15000);
     } catch (error) {
       console.error(error);
-      throw error;
+
+      // throw error;
     }
   },
   consumerToQueueFailed: async (queueName) => {
